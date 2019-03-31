@@ -1,5 +1,7 @@
 package br.com.gradlexp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class PersonService implements IPersonService {
 	@Override
 	public Person getPersonById(long id) {
 		return personRepository.findById(id).get();
+	}
+	@Override
+	public List<Person> getPersonByFirstName(String firstName) {
+		return personRepository.findByFirstName(firstName);
 	}
 	@Override
 	public void savePerson(Person person) {

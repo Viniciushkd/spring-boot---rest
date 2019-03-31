@@ -2,6 +2,7 @@ package br.com.gradlexp.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,6 +47,11 @@ public class PersonController {
 	public ResponseEntity<Person> findById(@PathVariable("id") Long id){
 		Person person = ps.getPersonById(id);
 		return new ResponseEntity<Person>(person, HttpStatus.OK);
+	}
+	
+	@GetMapping("/find/{firstName}")
+	public List<Person> findByFirstName(@PathVariable("firstName") String firstName){
+		return ps.getPersonByFirstName(firstName);
 	}
 	
 	@PutMapping("/{id}")
